@@ -29,7 +29,7 @@ header {
     margin-right: 100px;
  }
 
-form {
+.search-box {
     position: relative;
     top: 50%;
     left: 50%;
@@ -75,16 +75,16 @@ input {
     transition: all 1s;
 }
 
-form:hover {
+.search-box:hover {
     width: 200px;
     cursor: pointer;
 }
 
-form:hover input {
+.search-box:hover input {
     display: block;
 }
 
-form:hover .fa {
+.search-box:hover .fa {
     background: #B92C2C;
     color: white;
 }
