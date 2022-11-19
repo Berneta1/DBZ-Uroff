@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-import Context from '../context/context.js'
-
 
 import "../assets/css/header.css"
 import "../assets/css/galeria.css";
@@ -12,7 +10,7 @@ import "../assets/imgs/DBZ-logo.png"
 
 const Home = () => {
     const navigate = useNavigate()
-    
+
     const [allData, setAllData] = useState([])
     const [data, setData] = useState([])
     const [value, setValue] = useState("")
@@ -24,55 +22,38 @@ const Home = () => {
 
     useEffect(() => {
         filterUniverse()
-       
     }, [order])
 
-     useEffect(() => {
-         fetch('https://dragon-ball-super-api.herokuapp.com/api/characters')
-             .then((res) => res.json())
+    useEffect(() => {
+        fetch('https://dragon-ball-super-api.herokuapp.com/api/characters')
+            .then((res) => res.json())
             .then((json) => {
-               console.log(json)
+                console.log(json)
                 setAllData(json)
-                 setData(json)
-         
-            })
-             .catch((e) => console.log(e))
+                setData(json)
+             })
+            .catch((e) => console.log(e))
+            }, [])
 
-    }, [])
-
-
-
-    const filterData = () => {
+        const filterData = () => {
         const search = value.toLowerCase()
         const filtered = allData.filter((character) => {
             const name = character.name.toLowerCase()
 
             return name.includes(search)
         })
-            
         setData(filtered)
-        
+
 
     }
 
     const filterUniverse = () => {
         const filtered = allData.filter((character) => {
             const universe = character.universe
-
             return universe == order
         })
         setData(filtered)
-        
-
     }
-
-    
-        
-    
-
-
-
-
 
     return (
         <><header><div className="searcher">
@@ -89,8 +70,10 @@ const Home = () => {
                 <h1>Prueba del Dragon</h1>
             </div>
             <div className="selector">
+            <p>Filtra por Universo</p>
                 <div className="search-box">
-                    <select onChange={(e) => setOrder(e.target.value)}>
+                <i className="fa solid fa-filter"></i>
+                    <select className= "select" onChange={(e) => setOrder(e.target.value)}>
                         <option value={data.universe = '1'}>Todos</option>
                         <option key={data.universe = '0'} value={data.universe = "0"}>Universo 0</option>
                         <option key={data.universe = '1'} value={data.universe = '1'}>Universo 1</option>
@@ -107,7 +90,7 @@ const Home = () => {
                         <option key={data.universe = '12'} value={data.universe = '12'}>Universo 12</option>
                     </select>
                 </div>
-                <p>filtra por Universo</p>
+                
             </div>
         </header><div className="galeria grid-columns-4 p-3">
                 {data.map((data) => {
@@ -118,8 +101,9 @@ const Home = () => {
                             <p> Universo {data.universe}</p>
                             <div className="card-img">
                                 <img src={data.imageUrl} alt={data.name}></img>
-                                <button onClick={()=> navigate(`/${data.name}`)}>Ver ficha</button>
-                            </div>
+                                </div>
+                                <button onClick={() => navigate(`/${data.name}`)}>Ver ficha</button>
+                            
                         </div>
                     );
                 })}

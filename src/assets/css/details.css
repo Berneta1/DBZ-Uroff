@@ -2,11 +2,15 @@
 main-header{
     text-align: center;
 }
+main {
+    height: 1000px;
+}
 
 .ficha img {
     max-height: none;
     max-width: 313px;
     height: 440px;
+    margin-right: 90px;
 }
 
 .ficha {
@@ -23,7 +27,7 @@ main-header{
 .stats h4 {
     background-color:#EEC32C ;
     color: black;
-    width: 46%;
+    width: 110px;
     height: 39px;
     padding: 11px;
     border-radius:20%;

@@ -1,11 +1,12 @@
 import "../assets/css/details.css"
+import { Link } from 'react-router-dom'
 
 const Details = ({ character }) => {
     return (
         <div className="detalle">
             <main-header>
                 <div className="logo">
-                    <img src="src/assets/imgs/DBZ-logo.png" alt="logo"></img>
+                    <Link to="/"><img src="src/assets/imgs/DBZ-logo.png" alt="logo"></img></Link>
                 </div>
             </main-header>
             <div className="ficha">
@@ -36,16 +37,6 @@ const Details = ({ character }) => {
 
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
         </div>
 
 
